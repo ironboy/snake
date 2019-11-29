@@ -1,0 +1,17 @@
+{
+  "name": "node-sass-scaffold",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "all-that-sass": "^1.0.9",
+    "compression": "^1.7.4",
+    "express": "^4.17.1"
+  }
+}

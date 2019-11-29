@@ -1,0 +1,51 @@
+body {
+  margin: 0;
+  font-family: sans-serif;
+  font-size: 3vh;
+}
+
+.snake-board {
+  padding: 0;
+  border-spacing: 0;
+  border-collapse: separate;
+  width: 100vw;
+  height: 100vh;
+}
+
+.snake-board td {
+  background-color: #cce6c5;
+}
+
+.snake-board tr:nth-child(odd) td:nth-child(even) {
+  background-color: #b5dac7;
+}
+
+.snake-board tr:nth-child(even) td:nth-child(odd) {
+  background-color: #b5dac7;
+}
+
+.snake {
+  background-color: blue !important;
+}
+
+.snake-head {
+  background-color: #66F !important;
+}
+
+.cherry {
+  background-color: red !important;
+}
+
+.scoreboard div {
+  margin-bottom: 10px;
+}
+
+.scoreboard div span {
+  display: inline-block;
+  width: 150px;
+}
+
+.scoreboard div span:nth-child(2) {
+  width: calc(100% - 160px);
+  text-align: right;
+}
