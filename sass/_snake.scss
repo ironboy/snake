@@ -10,40 +10,74 @@ body {
   border-collapse: separate;
   width: 100vw;
   height: 100vh;
+
   td {
     background-color: rgb(204, 230, 197)
   }
+
   tr:nth-child(odd) td:nth-child(even){
     background-color: rgb(181, 218, 199);
   }
+  
   tr:nth-child(even) td:nth-child(odd){
      background-color:  rgb(181, 218, 199);
   }
-}
 
-.snake {
-   background-color: blue !important;
-}
+  td div {
+    height: 100%
+  }
 
-.snake-head {
-   background-color: #66F !important;
-}
+  .apple div div {
+    background-color: red;
+    border-radius: 50%;
+  }
 
-.cherry {
-   background-color: red !important;
+  .snake div div {
+    background-color: blue;
+    transform: scale(1.5, 0.9);
+    border-radius: 30%;
+  }
+
+  .snake-head div div {
+    background-color: #66F;
+  }
+
+  .snake.Up div div, .snake.Down div div {
+    transform: scale(0.9, 1.5);
+  }
+
+  .snake.Up div div {
+    transform-origin: top center
+  }
+
+ .snake.Down div div {
+    transform-origin: bottom center
+  }
+
+  .snake.Left div div {
+    transform-origin: center left
+  }
+
+ .snake.Right div div {
+    transform-origin: center right
+  }
+
+  .snake-head div {
+    transform: scale(1.2);
+    position:relative;
+    z-index:1;
+  }
+
 }
 
 .scoreboard div {
   margin-bottom: 10px;
-}
-
-.scoreboard div span {
-
-  display: inline-block;
-  width: 150px;
-}
-
-.scoreboard div span:nth-child(2){
+  span {
+    display: inline-block;
+    width: 150px;
+  }
+  span:nth-child(2){
     width: calc(100% - 160px);
     text-align: right;
   }
+}

@@ -13,10 +13,13 @@ class Snake {
   }
 
   render() {
-    $('.snake-board td').removeClass('snake snake-head');
+    let dirs = [...this.directions.slice(0, -1)];
+    dirs.push(dirs.slice(-1));
+    $('.snake-board td').removeClass('snake snake-head Up Down Left Right');
     this.body.forEach(([row, col], i) =>
       $('.snake-board tr').eq(row).find('td').eq(col)
-        .addClass('snake' + (i === 0 ? '-head' : '')));
+        .addClass('snake ' + (i === 0 ? 'snake-head ' : '') + dirs[i])
+    );
   }
 
   move() {
@@ -64,8 +67,8 @@ class Snake {
   }
 
   eat() {
-    let cherryPosAsString = this.game.cherry.position.join('*');
-    if (this.bodyAsStrings.includes(cherryPosAsString)) {
+    let applePosAsString = this.game.apple.position.join('*');
+    if (this.bodyAsStrings.includes(applePosAsString)) {
       this.grow();
       this.game.snakeAte();
     }
@@ -81,6 +84,7 @@ class Snake {
     if (tailDirection === 'Left') { newTail = [tailRow, tailCol - 1]; }
     if (tailDirection === 'Right') { newTail = [tailRow, tailCol + 1]; }
     this.body.push(newTail);
+    this.directions.push(tailDirection);
   }
 
 }

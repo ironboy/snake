@@ -11,7 +11,7 @@ class Game {
   start(restart = false) {
     this.speed = 1;
     this.snake = new Snake(this);
-    this.cherry = new Cherry(this);
+    this.apple = new Apple(this);
     if (!restart) {
       this.scoreBoard = new ScoreBoard(this);
     }
@@ -23,6 +23,10 @@ class Game {
     this.scoreBoard = new ScoreBoard(this);
     while (this.running) {
       await this.sleep(150 / this.speed);
+      /*this.snake.direction = '';
+      while (this.snake.direction === '') {
+        await this.sleep(10);
+      }*/
       this.snake.move();
       this.running = !this.snake.dead;
     }
@@ -65,7 +69,7 @@ class Game {
   }
 
   snakeAte() {
-    this.cherry = new Cherry(this);
+    this.apple = new Apple(this);
     this.scoreBoard.addToScore(10 * this.speed);
     this.speed += 0.04;
   }
@@ -74,9 +78,8 @@ class Game {
     // Build a simple board as a html table
     let html = '<table class="snake-board">'
     for (let row = 0; row < this.boardSize.rows; row++) {
-      html += '<tr>'
-      html += new Array(this.boardSize.cols).fill('<td></td>').join('');
-      html += '</tr>';
+      html += '<tr>' + new Array(this.boardSize.cols)
+        .fill('<td><div><div/></div></td>').join('') + '</tr>';
     }
     $('main').html(html);
   }

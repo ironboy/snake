@@ -24,16 +24,49 @@ body {
   background-color: #b5dac7;
 }
 
-.snake {
-  background-color: blue !important;
+.snake-board td div {
+  height: 100%;
 }
 
-.snake-head {
-  background-color: #66F !important;
+.snake-board .apple div div {
+  background-color: red;
+  border-radius: 50%;
 }
 
-.cherry {
-  background-color: red !important;
+.snake-board .snake div div {
+  background-color: blue;
+  transform: scale(1.5, 0.9);
+  border-radius: 30%;
+}
+
+.snake-board .snake-head div div {
+  background-color: #66F;
+}
+
+.snake-board .snake.Up div div, .snake-board .snake.Down div div {
+  transform: scale(0.9, 1.5);
+}
+
+.snake-board .snake.Up div div {
+  transform-origin: top center;
+}
+
+.snake-board .snake.Down div div {
+  transform-origin: bottom center;
+}
+
+.snake-board .snake.Left div div {
+  transform-origin: center left;
+}
+
+.snake-board .snake.Right div div {
+  transform-origin: center right;
+}
+
+.snake-board .snake-head div {
+  transform: scale(1.2);
+  position: relative;
+  z-index: 1;
 }
 
 .scoreboard div {

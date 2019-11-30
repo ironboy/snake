@@ -1,4 +1,4 @@
-class Cherry {
+class Apple {
 
   constructor(game) {
     while (!this.position || game.snake.bodyAsStrings
@@ -13,9 +13,9 @@ class Cherry {
 
   render() {
     let [row, col] = this.position;
-    $('.snake-board td').removeClass('cherry');
+    $('.snake-board td').removeClass('apple');
     $('.snake-board tr').eq(row)
-      .find('td').eq(col).addClass('cherry');
+      .find('td').eq(col).addClass('apple');
   }
 
 }
