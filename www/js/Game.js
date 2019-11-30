@@ -3,9 +3,32 @@ class Game {
   constructor() {
     this.addEvents();
     this.boardSize = { rows: 17, cols: 17 };
-    this.speed = 1;
     this.running = false;
+    this.render();
     this.start();
+  }
+
+  start(restart = false) {
+    this.speed = 1;
+    this.snake = new Snake(this);
+    this.cherry = new Cherry(this);
+    if (!restart) {
+      this.scoreBoard = new ScoreBoard(this);
+    }
+    this.sizeMe();
+  }
+
+  async gameLoop() {
+    this.running = true;
+    this.scoreBoard = new ScoreBoard(this);
+    while (this.running) {
+      await this.sleep(150 / this.speed);
+      this.snake.move();
+      this.running = !this.snake.dead;
+    }
+    await this.sleep(1500);
+    this.scoreBoard.render();
+    this.start(true);
   }
 
   addEvents() {
@@ -28,15 +51,6 @@ class Game {
     return new Promise(res => setTimeout(res, ms));
   }
 
-  start() {
-    this.render();
-    this.speed = 1;
-    this.snake = new Snake(this);
-    this.cherry = new Cherry(this);
-    this.scoreBoard = new ScoreBoard(this);
-    this.sizeMe();
-  }
-
   sizeMe() {
     let el = $('.snake-board');
     let elScore = $('.scoreboard');
@@ -50,22 +64,10 @@ class Game {
     elScore.width(min);
   }
 
-  async gameLoop() {
-    this.running = true;
-    while (this.running) {
-      await this.sleep(150 / this.speed);
-      this.snake.move();
-      this.running = !this.snake.dead;
-      this.scoreBoard.render();
-    }
-    await this.sleep(1000);
-    this.start();
-  }
-
   snakeAte() {
     this.cherry = new Cherry(this);
     this.scoreBoard.addToScore(10 * this.speed);
-    this.speed += 0.01;
+    this.speed += 0.04;
   }
 
   render() {
