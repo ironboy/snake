@@ -12,6 +12,6 @@
   "dependencies": {
     "all-that-sass": "^1.0.9",
     "compression": "^1.7.4",
-    "express": "^4.17.1"
+    "express": "^4.17.3"
   }
 }
